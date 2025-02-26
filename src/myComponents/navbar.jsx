@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom"; // ✅ useLocation added
+import { Link, useLocation } from "react-router-dom"; 
 import "../css/navStyle.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun, faX, faBars, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
@@ -53,7 +53,7 @@ if (docSnap.exists()) {
 }
 
 }
-setTimeout(toggleReviewForm,30000)
+setTimeout(toggleReviewForm,120000)
 async function toggleReviewForm() {
   if(localStorage.getItem("rivalsfc-reviews-status")!="true"){
   const { value: formValues } = await Swal.fire({
