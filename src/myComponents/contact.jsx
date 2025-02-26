@@ -82,7 +82,7 @@ export default function Contact() {
   return (
     <div className="contactBody">
       <div className="secondSection">
-        <h2>Schedule a Match</h2>
+        <h2 style={{color:"black"}}>Schedule a Match</h2>
         <form onSubmit={onSubmit} className="contactForm">
           <input type="text" name="name" placeholder="Your Name" required />
           <input type="text" name="teamName" placeholder="Your Team Name" required />
