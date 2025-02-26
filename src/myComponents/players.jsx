@@ -5,17 +5,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import pp from '../assets/emptypp.jpg'
 import nullpp from '../assets/emptypp.jpg'
-
-// Firebase Config
-const firebaseConfig = {
-  apiKey: "AIzaSyDdPmw7EHBU-AwoDQ1szeW7WtHANaF30Q0",
-  authDomain: "xo-game-c2506.firebaseapp.com",
-  projectId: "xo-game-c2506",
-  storageBucket: "xo-game-c2506.appspot.com",
-  messagingSenderId: "1003496744924",
-  appId: "1:1003496744924:web:34f59f5e9df9d261831119",
-  measurementId: "G-701HCZH6H9",
-};
+import firebaseConfig from "./firebaseConfig";  
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
