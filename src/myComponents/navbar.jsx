@@ -53,7 +53,7 @@ if (docSnap.exists()) {
 }
 
 }
-setTimeout(toggleReviewForm,120000)
+setTimeout(toggleReviewForm,60000)
 async function toggleReviewForm() {
   if(localStorage.getItem("rivalsfc-reviews-status")!="true"){
   const { value: formValues } = await Swal.fire({
