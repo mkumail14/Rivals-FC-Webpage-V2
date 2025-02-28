@@ -6,6 +6,7 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 import pp from '../assets/emptypp.jpg'
 import nullpp from '../assets/emptypp.jpg'
 import firebaseConfig from "./firebaseConfig";  
+import Swal from "sweetalert2";
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -62,7 +63,21 @@ function Players() {
                         Apperences: {player.app}
                       </p>
                     </div>
-                    <button className="card__button">View Profile</button>
+                    <button onClick={()=>{
+ Swal.fire({
+        icon: "error",
+        title: "Blocked: Error 404!",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+                    }} className="card__button">View Profile</button>
                   </div>
                 </article>
               ))

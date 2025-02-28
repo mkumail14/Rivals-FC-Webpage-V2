@@ -5,8 +5,10 @@ import { faLinkedin, faGithub, faInstagram, faWhatsapp } from "@fortawesome/free
 import { faEnvelope, faLink } from "@fortawesome/free-solid-svg-icons";
 
 export default function Footer() {
+
+
       return (
-    <div id="footerBody" className="footerBody">
+    <div id="footerBody" >
       <div className="box1">
         <p>© 2025 Rivals FC. All Rights Reserved.</p>
         </div>

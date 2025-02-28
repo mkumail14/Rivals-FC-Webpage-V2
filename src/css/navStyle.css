@@ -48,6 +48,30 @@ body.dark nav{
 
 }
 
+body.dark button{
+    background: linear-gradient(45deg, #0057FF, #4070F4);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+    }
+
+    body.dark button:hover{
+        background: linear-gradient(45deg, #003FBB, #0057FF);
+    }
+
+     button{
+        background: linear-gradient(45deg, #242526, #1A1B1D);
+        color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+        }
+    
+        button:hover{
+            background: linear-gradient(45deg, #121416, #242526);
+        }
+
+
+
 nav .nav-bar{
     position: relative;
     height: 100%;

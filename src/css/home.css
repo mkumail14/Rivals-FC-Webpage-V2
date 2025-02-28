@@ -7,6 +7,19 @@
   display: none;
   background-color: red;
 }
+/* h1{
+  color: #F5F6F7 ;
+  
+} */
+
+h2{
+  color: #C9CCD1 ;
+}
+
+h3{
+  color: #A8ABAF ;
+}
+
 
 /* ✨ Heading Styles */
 h2 {
@@ -14,7 +27,6 @@ h2 {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: white;
   text-align: center;
   position: relative;
   padding-bottom: 10px;

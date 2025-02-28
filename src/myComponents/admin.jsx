@@ -5,6 +5,7 @@ import { getAuth, signInWithEmailAndPassword,onAuthStateChanged } from "firebase
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import Swal from 'sweetalert2'
 import firebaseConfig from "./firebaseConfig";  
+import rivalsLogo from "../assets/logo.jpg"
 
 // Initialize Firebase only once
 let app;
@@ -117,6 +118,7 @@ export default function Admin() {
       <div className="container">
         <div className="screen">
           <div className="screen__content">
+            <img src={rivalsLogo} className="logoRegister"></img>
             <form onSubmit={submitForm} className="login">
               <div className="login__field">
                 <i className="login__icon fas fa-user"></i>

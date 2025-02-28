@@ -11,7 +11,7 @@ import { getFirestore, doc, getDoc,setDoc, Timestamp  } from "firebase/firestore
 import Swal from "sweetalert2";
 
 import firebaseConfig from "./firebaseConfig";  
-
+localStorage.setItem("mode","dark-mode");
 let app;
 if (!getApps().length) {
   app = initializeApp(firebaseConfig);
@@ -86,6 +86,9 @@ async function toggleReviewForm() {
         rating: document.querySelector('input[name="rate"]:checked')?.value || "No rating",
         comment: document.getElementById("swal-input2").value || "No comments"
       };
+    },
+    preDeny:()=>{
+      console.log("Set to Later!")
     }
   });
 

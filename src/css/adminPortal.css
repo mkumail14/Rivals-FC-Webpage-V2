@@ -85,7 +85,7 @@ th {
    
 }
 .Section{
-    background-color: wheat;
+    /* background-color: wheat; */
     margin-bottom: 10px;
     margin-top: 10px;
 }
@@ -175,3 +175,20 @@ td:last-child {
     margin-right: 20px;
     margin-bottom: 20px;
 }
+
+
+.loading-icon {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  
+
+  .small-font {
+    font-size: 12px !important; /* Adjust font size */
+  }
+  

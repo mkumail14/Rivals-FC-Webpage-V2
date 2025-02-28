@@ -29,7 +29,9 @@ const Register = () => {
     const pass = await takePass();
     if (!pass) {
       Swal.fire("Error! Failed to register");
+      setResult("FAILED TO REGISTER!");
       return;
+      
     }
 
     try {

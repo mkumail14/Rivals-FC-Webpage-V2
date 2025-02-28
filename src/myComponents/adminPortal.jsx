@@ -53,6 +53,26 @@ export default function AdminPortal() {
         const isAdminCheck = await isUserAdmin(user.email);
         setIsAdmin(isAdminCheck);
         setLoading(false);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          customClass: {
+            title: 'small-font' // Custom class for smaller font
+          },
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        
+        Toast.fire({
+          icon: "success",
+          title: "Logged in as " + user.email
+        });
+        
       });
     };
 
@@ -76,6 +96,8 @@ const docRef5 = doc(db, "Rivals-FC-V2", "aboutContent");
 const docSnap5 = await getDoc(docRef5);
 const docRef6 = doc(db, "Rivals-FC-V2", "slideShowImages");
 const docSnap6 = await getDoc(docRef6);
+
+
 
   setplayersList(docSnap.data().allPlayers)
   setgalleryList(docSnap1.data().allImages)
@@ -874,8 +896,35 @@ function timeConverter(timestamp) {
 
 
 
+
+
+
 async function uploadFile(file) {
   if (!file) return null; 
+ 
+
+
+  
+  const loadingToast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timerProgressBar: true,
+    didOpen: () => {
+      Swal.getPopup().querySelector('.swal2-icon').classList.add('loading-icon');
+    }
+  });
+  
+  loadingToast.fire({
+    title: 'Processing...',
+    iconHtml: `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="24" class="loading-icon">
+        <circle cx="25" cy="25" r="20" stroke="white" stroke-width="4" fill="none"></circle>
+      </svg>
+    `
+  });
+  
+
 
   const storage = getStorage();
   const storageRef = ref(storage, `rivals-v2/${file.name}`);
@@ -888,6 +937,26 @@ async function uploadFile(file) {
     console.error("Upload failed:", error);
     return null;
   }
+}
+
+
+async function clearMatchRequest() {
+  Swal.fire({
+    title: "Are you sure you want to clear all match requests?",
+    text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "rgb(255, 127, 80)",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+    if (result.isConfirmed) {
+        setmatchRequest([]);
+        saveMatchRequestToDB();
+        
+    }
+  })
+  
 }
 
 async function deletePlayer(index) {
@@ -1303,6 +1372,15 @@ async function savePlayerListToDB(updatedList) {
 
 }
 
+async function saveMatchRequestToDB() {
+  await setDoc(doc(db, "Rivals-FC-V2", "matchRequest"), {
+    matchRequest: []
+  });
+  loadAllData();
+  updateElement()
+
+}
+
 
 async function saveSlidesToDB() {
   await setDoc(doc(db, "Rivals-FC-V2", "slideShowImages"), {
@@ -1365,7 +1443,7 @@ return (
             borderColor:"inherit"
           }}
         >
-          <h6 style={{ color: "#ff7f50", fontSize: "16px", marginBottom: "10px" }}>
+          <h6 style={{ fontSize: "16px", marginBottom: "10px" }}>
             Add Email as Admin!
           </h6>
           <div style={{ display: "flex", width: "100%", gap: "10px" }}>
@@ -1411,7 +1489,7 @@ return (
             
           }}
         >
-<h6 style={{ color: "rgb(255, 127, 80)", fontSize: "16px", marginBottom: "10px" }}>
+<h6 style={{  fontSize: "16px", marginBottom: "10px" }}>
   Special Options
 </h6>
           <br/>
@@ -1440,9 +1518,13 @@ return (
           }}
           className="Section"
         >
-          <h1 style={{ color: "#ff7f50", marginBottom: "10px" }}>
+          <h1 style={{ marginBottom: "10px" }}>
             Players Section
           </h1>
+          <button className="btns" onMouseOver={(e) => (e.target.style.backgroundColor = "#ff5722")}
+              onMouseOut={(e) => (e.target.style.backgroundColor = "#ff7f50")}
+              onClick={addPlayer}
+              >Add new player</button>
           <div className="table-container">
           <table>
           <thead>
@@ -1463,11 +1545,7 @@ return (
          
           </table>
           </div>
-      
-          <button className="btns" onMouseOver={(e) => (e.target.style.backgroundColor = "#ff5722")}
-              onMouseOut={(e) => (e.target.style.backgroundColor = "#ff7f50")}
-              onClick={addPlayer}
-              >Add new player</button>
+    
           
         </div>
         <div
@@ -1567,6 +1645,7 @@ return (
         >
         <h1>Matches Request</h1>
         <br/>
+        <button onClick={clearMatchRequest}>Clear All Request</button>
 <br/>
 <div className="table-container">
   <table>
@@ -1580,7 +1659,8 @@ return (
       </tr>
     </thead>
     <tbody>
-      {matchRequestElement}  
+      {/* {matchRequestElement.length===0 ? <p>No Data Availible</p> : matchRequestElement}   */}
+      {matchRequestElement}
     </tbody>
   </table>
 </div>

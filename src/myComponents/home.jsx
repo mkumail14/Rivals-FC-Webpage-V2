@@ -32,8 +32,8 @@ function Home() {
       }, 3000);
       return () => clearInterval(interval);
     }
-  }, [images]); // ✅ Runs only when images are loaded
-
+  }, [images]); 
+  
   async function loadData() {
     try {
       setLoading(true);
@@ -78,7 +78,9 @@ function Home() {
           <div className="firstPart">
             <div className="aboutBox">
               <h1>Welcome to Rivals FC</h1>
+              <br/>
               <h3>The Ultimate Football Experience</h3>
+              <br/>
               <p>{aboutData}</p>
             </div>
             <div className="slideshow-container">
