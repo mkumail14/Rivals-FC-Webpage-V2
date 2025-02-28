@@ -86,9 +86,6 @@ async function toggleReviewForm() {
         rating: document.querySelector('input[name="rate"]:checked')?.value || "No rating",
         comment: document.getElementById("swal-input2").value || "No comments"
       };
-    },
-    preDeny:()=>{
-      console.log("Set to Later!")
     }
   });
 
@@ -133,10 +130,7 @@ function logout(){
         clearInterval(timerInterval);
       }
     }).then((result) => {
-      /* Read more about handling dismissals below */
-      if (result.dismiss === Swal.DismissReason.timer) {
-        console.log("I was closed by the timer");
-      }
+    
     });
     signOut(auth).then(() => {
       // Sign-out successful.

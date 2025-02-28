@@ -26,7 +26,6 @@ export default function Gallery() {
       if (docSnap.exists()) {
         const imgData = docSnap.data() || { allImages: [] }; // Ensure valid structure
         setData(imgData);
-        console.log("Images Data Loaded!", imgData);
       } else {
         console.log("No image data found!");
       }

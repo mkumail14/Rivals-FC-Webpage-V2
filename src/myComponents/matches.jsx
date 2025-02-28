@@ -24,7 +24,6 @@ export default function Matches() {
       if (docSnap.exists()) {
         const matchesArray = docSnap.data().allMatches || [];
         setData(matchesArray);
-        console.log("Matches Data Loaded!", matchesArray);
       } else {
         console.log("No match data found!");
       }

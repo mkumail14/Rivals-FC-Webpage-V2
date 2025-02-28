@@ -136,7 +136,7 @@ function refresh(){
         setAdminLists(docSnap.data().adminIDs)
         return adminList.includes(mail);
       } else {
-        console.log("Admin list not found!");
+        console.error("Admin list not found!");
         return false;
       }
     } catch (error) {
@@ -414,7 +414,6 @@ if(newPlayer.Name=='' || newPlayer.Position==''|| formValues.Goal_Scored==''|| n
     setplayersList(tempArr);
     savePlayerListToDB(tempArr);
 
-    console.log("Player Added:", newPlayer);
     Swal.fire("Player Added!", `${newPlayer.Name} has been added.`, "success");
   }
 }
@@ -496,7 +495,6 @@ async function addMedia() {
     setgalleryList(tempArr);
     saveGalleryListToDB(tempArr);
 
-    console.log("Media Added:", newMedia);
     Swal.fire("Media Added!", "success");
   }
 }
@@ -626,7 +624,6 @@ status="Lost"
       increaseAppearances(result.value.selectedPlayers);
       increaseGoalScores(result.value.goals);
       saveMatchesListToDB(updatedMatchList)
-      console.log("Match Data:", result.value);
       Swal.fire("Saved!", "Match has been added.", "success");
     }
   });
@@ -650,7 +647,6 @@ async function increaseAppearances(x) {
             app: newApp.toString()
           };
 
-          console.log("Updating app:", updatedList[index1]);
           break; 
         }
       }
@@ -857,12 +853,10 @@ if(updatedMatch.Team=='' || updatedMatch.Ours==''|| updatedMatch.Opps==''|| upda
   });
   return
 }
-console.log("Updated Match ",updatedMatch)
 
     let tempArr =matchesList; 
     tempArr.splice(index,1)
     tempArr.push(updatedMatch)
-    console.log("Updated Match List",tempArr)
     setmatchesList(tempArr);
     saveMatchesListToDB(tempArr);
 

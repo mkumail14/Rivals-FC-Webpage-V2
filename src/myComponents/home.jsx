@@ -37,7 +37,6 @@ function Home() {
   async function loadData() {
     try {
       setLoading(true);
-      console.log("⏳ Fetching data...");
 
       const aboutRef = doc(db, "Rivals-FC-V2", "aboutContent");
       const playersRef = doc(db, "Rivals-FC-V2", "allPlayers");
@@ -57,13 +56,10 @@ function Home() {
       if (matchesSnap.exists()) setMatches(matchesSnap.data().allMatches || []);
       if (slideSnap.exists()) {
         setImages(slideSnap.data().data || []); // ✅ Corrected
-        console.log("📸 Slide Images:", slideSnap.data().data);
       }
 
-      console.log("✅ Data loaded successfully!");
       setLoading(false);
     } catch (error) {
-      console.error("❌ Error loading data:", error);
       setLoading(false);
     }
   }

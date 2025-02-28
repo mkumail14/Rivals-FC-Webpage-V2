@@ -51,7 +51,7 @@ export default function Admin() {
         const adminList = docSnap.data().adminIDs || [];
         return adminList.includes(mail);
       } else {
-        console.log("Admin list not found!");
+        console.error("Admin list not found!");
         return false;
       }
     } catch (error) {
@@ -65,8 +65,6 @@ export default function Admin() {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        console.log("Admin Data:", docSnap.data());
-
         const adminList = docSnap.data().adminIDs || [];
         const isAdminCheck = adminList.includes(mail);
 
@@ -82,9 +80,7 @@ export default function Admin() {
 				icon: "info"
 			  });
         }
-      } else {
-        console.log("No such document!");
-      }
+      } 
     } catch (error) {
       console.error("Error fetching admin data:", error);
 	  Swal.fire({
@@ -100,7 +96,6 @@ export default function Admin() {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        console.log("User logged in:", userCredential.user.email);
         getAdminData(userCredential.user.email);
       })
       .catch((error) => {

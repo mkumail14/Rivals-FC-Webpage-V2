@@ -37,7 +37,6 @@ const Register = () => {
     try {
       // Firebase Registration
       const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
-      console.log("User registered:", userCredential.user);
 
       // Submit the form data
       await submitForm(event);
@@ -60,7 +59,7 @@ const Register = () => {
       event.target.reset();
       
     } catch (error) {
-      console.log("Error", error.code);
+      console.error("Error", error.code);
       setResult(error.message);
       Swal.fire({
         title: "Weak Password!",
@@ -97,7 +96,7 @@ const Register = () => {
 
     const data = await response.json();
     if (!data.success) {
-      console.log("Error", data);
+      console.error("Error", data);
       setResult(data.message);
     }
   }

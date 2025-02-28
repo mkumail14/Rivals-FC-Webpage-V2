@@ -27,7 +27,6 @@ function Players() {
     if (docSnap.exists()) {
       const playersArray = docSnap.data().allPlayers || []; // ✅ Correct key used
       setData(playersArray);
-      console.log("Players Data Loaded!", playersArray);
     } else {
       console.log("Failed to load Data from Firestore!");
     }
