@@ -874,8 +874,7 @@ function timeConverter(timestamp) {
     return "Invalid Date";
   }
 
-  let dateObj = timestamp.toDate(); // Convert Firestore Timestamp to JavaScript Date object
-
+  let dateObj = timestamp.toDate(); 
   let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
   let year = dateObj.getFullYear();
