@@ -133,7 +133,7 @@ function Home() {
             <h2 className="homeH2">Recent Matches</h2>
             <div className="matchesGrid homeMatch">
               {matches.length > 0 ? (
-                matches.slice(0, 3).map((match, index) => (
+                matches.slice(-3).map((match, index) => (
                   <div className={`matchCard ${match.Status.toLowerCase()}`} key={index}>
                     <h2>Rivals Vs {match.Team}</h2>
                     <p>

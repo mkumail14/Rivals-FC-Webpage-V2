@@ -23,6 +23,7 @@ export default function Matches() {
 
       if (docSnap.exists()) {
         const matchesArray = docSnap.data().allMatches || [];
+        matchesArray.reverse()
         setData(matchesArray);
       } else {
         console.log("No match data found!");
